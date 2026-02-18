@@ -249,6 +249,35 @@
       line-height: 1.5;
     }
 
+    .paladin-callout {
+      margin-top: 10px;
+      padding: 8px 10px;
+      border-radius: 6px;
+      background: rgba(52, 211, 153, 0.04);
+      border: 1px solid rgba(52, 211, 153, 0.1);
+    }
+    .paladin-link {
+      text-decoration: none;
+      color: #7d8590;
+      font-size: 11px;
+      line-height: 1.5;
+      display: flex;
+      gap: 6px;
+      align-items: flex-start;
+      transition: color 0.3s;
+    }
+    .paladin-link:hover {
+      color: #34d399;
+    }
+    .paladin-link strong {
+      color: #34d399;
+    }
+    .paladin-arrow {
+      color: #34d399;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
     .built-link {
       text-decoration: none;
       color: inherit;
@@ -537,8 +566,14 @@
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="1.5"><path d="M9 12l2 2 4-4"/><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
               </div>
               <div class="built-name">PacBot <span class="oss-badge">Open Source</span></div>
-              <div class="built-desc">Continuous security &amp; compliance platform at T-Mobile. Policy-as-code engine that assesses cloud infrastructure, tracks violations, and auto-remediates misconfigurations. Apache 2.0 licensed. Commercialized as Paladin Cloud ($3.3M seed funded by T-Mobile Ventures).</div>
+              <div class="built-desc">Continuous security &amp; compliance platform built at T-Mobile. Policy-as-code engine that assesses cloud infrastructure, tracks violations, and auto-remediates misconfigurations. Apache 2.0 licensed.</div>
               <div class="built-tech">AWS &bull; Lambda &bull; Policy-as-Code &bull; AutoFix &bull; Multi-Account</div>
+              <div class="paladin-callout">
+                <a href="https://paladincloud.io/" class="paladin-link" target="_blank" rel="noopener">
+                  <span class="paladin-arrow">&rarr;</span>
+                  <span>Became the foundation of <strong>Paladin Cloud</strong> &mdash; AI-powered cloud security platform. $3.3M seed funded, 2022 Red Herring Top 100 Global, featured on TechCrunch.</span>
+                </a>
+              </div>
             </a>
           </div>
           <div class="built-card">
