@@ -205,6 +205,31 @@
       line-height: 1.5;
     }
 
+    .built-link {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+    .oss-badge {
+      font-size: 9px;
+      padding: 2px 7px;
+      border-radius: 10px;
+      background: rgba(52, 211, 153, 0.1);
+      color: #34d399;
+      border: 1px solid rgba(52, 211, 153, 0.2);
+      vertical-align: middle;
+      margin-left: 6px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+    .built-tech {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      color: #30363d;
+      margin-top: 6px;
+      letter-spacing: 0.3px;
+    }
+
     /* Action buttons */
     .actions {
       display: flex;
@@ -354,11 +379,14 @@
         <p class="built-label">Platforms I've Built</p>
         <div class="built-grid">
           <div class="built-card">
-            <div class="built-icon">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="1.5"><path d="M9 12l2 2 4-4"/><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-            </div>
-            <div class="built-name">PacBot</div>
-            <div class="built-desc">Open-source policy-as-code cloud security &amp; compliance automation platform</div>
+            <a href="https://pacbot.org" class="built-link" target="_blank" rel="noopener">
+              <div class="built-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="1.5"><path d="M9 12l2 2 4-4"/><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              </div>
+              <div class="built-name">PacBot <span class="oss-badge">Open Source</span></div>
+              <div class="built-desc">Continuous security &amp; compliance platform at T-Mobile. Policy-as-code engine that assesses cloud infrastructure, tracks violations, and auto-remediates misconfigurations. Apache 2.0 licensed. Commercialized as Paladin Cloud ($3.3M seed funded by T-Mobile Ventures).</div>
+              <div class="built-tech">AWS &bull; Lambda &bull; Policy-as-Code &bull; AutoFix &bull; Multi-Account</div>
+            </a>
           </div>
           <div class="built-card">
             <div class="built-icon">
