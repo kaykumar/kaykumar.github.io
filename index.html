@@ -184,7 +184,7 @@
       gap: 8px;
       justify-content: center;
       margin-bottom: 40px;
-      max-width: 600px;
+      max-width: 860px;
     }
     .pill {
       font-family: 'JetBrains Mono', monospace;
@@ -205,7 +205,7 @@
     /* Platforms built section */
     .built-section {
       width: 100%;
-      max-width: 560px;
+      max-width: 860px;
       margin-bottom: 32px;
     }
     .built-label {
@@ -219,8 +219,8 @@
     }
     .built-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 12px;
     }
     .built-card {
       padding: 14px 16px;
@@ -319,7 +319,7 @@
     /* Endorsement / Tweet section */
     .endorsement {
       width: 100%;
-      max-width: 560px;
+      max-width: 860px;
       margin-bottom: 36px;
     }
     .endorsement-label {
@@ -509,6 +509,8 @@
       align-items: center;
       position: relative;
       overflow: hidden;
+      max-width: 960px;
+      width: 100%;
     }
     .card::before {
       content: '';
@@ -537,9 +539,13 @@
       color: #30363d;
     }
 
+    @media (max-width: 900px) {
+      .built-grid { grid-template-columns: 1fr 1fr; }
+      .card { padding: 50px 36px; }
+    }
     @media (max-width: 600px) {
       .name { font-size: 36px; }
-      .card { padding: 40px 24px; }
+      .card { padding: 40px 20px; }
       .actions { flex-direction: column; align-items: center; }
       .pills { gap: 6px; }
       .built-grid { grid-template-columns: 1fr; }
@@ -609,9 +615,9 @@
             <div class="built-icon">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#818cf8" stroke-width="1.5"><path d="M12 2a4 4 0 0 0-4 4c0 2 2 3 2 6H6a2 2 0 0 0-2 2v2h16v-2a2 2 0 0 0-2-2h-4c0-3 2-4 2-6a4 4 0 0 0-4-4z"/><path d="M9 18v1a3 3 0 0 0 6 0v-1"/></svg>
             </div>
-            <div class="built-name">AI Helpdesk</div>
-            <div class="built-desc">AI-powered support automation platform built at Tesla. Ingests and learns from email mailboxes, Confluence knowledge bases, and internal policy documents using LLMs. Autopilots tier-1 support operations, auto-classifies tickets, drafts responses, and escalates intelligently &mdash; reducing mean time to resolution.</div>
-            <div class="built-tech">LLMs &bull; NLP &bull; Knowledge Ingestion &bull; Auto-Triage &bull; Confluence</div>
+            <div class="built-name">AI Helpdesk Platform</div>
+            <div class="built-desc">Enterprise-grade, self-service AI helpdesk platform built at Tesla. Organizations configure their own integrations (email, Slack, ticketing systems) and plug in knowledge sources (Confluence, SharePoint, policy docs, mailboxes). The platform ingests, indexes, and learns from these sources using LLMs to autopilot tier-1 support &mdash; auto-classifying tickets, drafting contextual responses, and escalating intelligently. Designed as a multi-tenant platform with admin console for managing integrations, knowledge pipelines, and response tuning.</div>
+            <div class="built-tech">LLMs &bull; Multi-Tenant &bull; Configurable Integrations &bull; Knowledge Pipelines &bull; Admin Console</div>
           </div>
           <div class="built-card">
             <div class="built-icon">
