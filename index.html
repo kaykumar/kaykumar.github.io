@@ -158,6 +158,53 @@
       background: rgba(56, 189, 248, 0.08);
     }
 
+    /* Platforms built section */
+    .built-section {
+      width: 100%;
+      max-width: 560px;
+      margin-bottom: 32px;
+    }
+    .built-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: #484f58;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-align: center;
+      margin-bottom: 16px;
+    }
+    .built-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .built-card {
+      padding: 14px 16px;
+      border-radius: 10px;
+      border: 1px solid rgba(56, 189, 248, 0.06);
+      background: rgba(56, 189, 248, 0.02);
+      transition: all 0.3s ease;
+    }
+    .built-card:hover {
+      border-color: rgba(56, 189, 248, 0.15);
+      background: rgba(56, 189, 248, 0.04);
+    }
+    .built-icon {
+      margin-bottom: 8px;
+    }
+    .built-name {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      font-weight: 500;
+      color: #f0f6fc;
+      margin-bottom: 4px;
+    }
+    .built-desc {
+      font-size: 11px;
+      color: #484f58;
+      line-height: 1.5;
+    }
+
     /* Action buttons */
     .actions {
       display: flex;
@@ -275,6 +322,7 @@
       .card { padding: 40px 24px; }
       .actions { flex-direction: column; align-items: center; }
       .pills { gap: 6px; }
+      .built-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -299,7 +347,56 @@
 
       <h1 class="name">Kamal Kumar</h1>
       <p class="title">Engineering Manager</p>
-      <p class="tagline">Building secure systems at scale</p>
+      <p class="tagline">Building tools &amp; platforms that secure the enterprise</p>
+
+      <!-- Platforms built -->
+      <div class="built-section">
+        <p class="built-label">Platforms I've Built</p>
+        <div class="built-grid">
+          <div class="built-card">
+            <div class="built-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="1.5"><path d="M9 12l2 2 4-4"/><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div class="built-name">PacBot</div>
+            <div class="built-desc">Open-source policy-as-code cloud security &amp; compliance automation platform</div>
+          </div>
+          <div class="built-card">
+            <div class="built-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            </div>
+            <div class="built-name">DataCraft</div>
+            <div class="built-desc">Databricks-like platform running Spark on Kubernetes with secret management</div>
+          </div>
+          <div class="built-card">
+            <div class="built-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="1.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+            </div>
+            <div class="built-name">Threat Intelligence</div>
+            <div class="built-desc">Real-time threat detection &amp; response platform across cloud &amp; on-prem</div>
+          </div>
+          <div class="built-card">
+            <div class="built-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#818cf8" stroke-width="1.5"><path d="M12 2a4 4 0 0 0-4 4c0 2 2 3 2 6H6a2 2 0 0 0-2 2v2h16v-2a2 2 0 0 0-2-2h-4c0-3 2-4 2-6a4 4 0 0 0-4-4z"/><path d="M9 18v1a3 3 0 0 0 6 0v-1"/></svg>
+            </div>
+            <div class="built-name">AI Helpdesk</div>
+            <div class="built-desc">LLM-powered platform learning from mailboxes, Confluence &amp; policy docs to autopilot support</div>
+          </div>
+          <div class="built-card">
+            <div class="built-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/><path d="M7 8h2m2 0h2m2 0h2" opacity="0.6"/></svg>
+            </div>
+            <div class="built-name">Cloud Compliance</div>
+            <div class="built-desc">24/7 monitoring, threat detection &amp; automated remediation across AWS &amp; Azure</div>
+          </div>
+          <div class="built-card">
+            <div class="built-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="1.5"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+            </div>
+            <div class="built-name">RAG Security Assistants</div>
+            <div class="built-desc">LLM-based assistants helping teams find &amp; remediate vulnerabilities in code &amp; infra</div>
+          </div>
+        </div>
+      </div>
 
       <div class="pills">
         <span class="pill highlight">Application Security</span>
