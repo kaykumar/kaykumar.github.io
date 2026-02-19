@@ -425,6 +425,49 @@
       letter-spacing: 0.5px;
     }
 
+    .recognition-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      width: 100%;
+    }
+    .advisory-card {
+      padding: 20px 24px;
+      border-radius: 12px;
+      border: 1px solid rgba(129, 140, 248, 0.08);
+      background: rgba(129, 140, 248, 0.02);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      transition: all 0.3s ease;
+    }
+    .advisory-card:hover {
+      border-color: rgba(129, 140, 248, 0.15);
+    }
+    .advisory-icon {
+      flex-shrink: 0;
+    }
+    .advisory-role {
+      font-size: 13px;
+      font-weight: 600;
+      color: #f0f6fc;
+      margin-bottom: 2px;
+    }
+    .advisory-org {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: #818cf8;
+      margin-bottom: 4px;
+    }
+    .advisory-desc {
+      font-size: 11px;
+      color: #484f58;
+      line-height: 1.5;
+    }
+    @media (max-width: 600px) {
+      .recognition-grid { grid-template-columns: 1fr; }
+    }
+
     /* Action buttons */
     .actions {
       display: flex;
@@ -649,23 +692,35 @@
         <span class="pill">Shift-Left Security</span>
       </div>
 
-      <!-- Endorsement -->
+      <!-- Recognition -->
       <div class="endorsement">
-        <p class="endorsement-label">Notable Mention</p>
-        <div class="tweet-card">
-          <div class="tweet-header">
-            <div class="tweet-avatar">JB</div>
-            <div>
-              <div class="tweet-author">Jeff Barr</div>
-              <div class="tweet-handle">VP &amp; Chief Evangelist, AWS</div>
+        <p class="endorsement-label">Recognition</p>
+        <div class="recognition-grid">
+          <div class="tweet-card">
+            <div class="tweet-header">
+              <div class="tweet-avatar">JB</div>
+              <div>
+                <div class="tweet-author">Jeff Barr</div>
+                <div class="tweet-handle">VP &amp; Chief Evangelist, AWS</div>
+              </div>
+            </div>
+            <div class="tweet-body">
+              Very cool - PacBot (Policy as Code Bot) - Continuous compliance monitoring, reporting, and security automation from T-Mobile! &lsquo;Assess &rarr; Report &rarr; Remediate &rarr; Repeat&rsquo; is PacBot's philosophy.
+            </div>
+            <div class="tweet-footer">
+              <span class="tweet-date">October 10, 2018</span>
+              <a href="https://twitter.com/jeffbarr/status/1050043093045542817" class="tweet-link" target="_blank" rel="noopener">View on X &rarr;</a>
             </div>
           </div>
-          <div class="tweet-body">
-            Very cool - PacBot (Policy as Code Bot) - Continuous compliance monitoring, reporting, and security automation from T-Mobile! &lsquo;Assess &rarr; Report &rarr; Remediate &rarr; Repeat&rsquo; is PacBot's philosophy.
-          </div>
-          <div class="tweet-footer">
-            <span class="tweet-date">October 10, 2018</span>
-            <a href="https://twitter.com/jeffbarr/status/1050043093045542817" class="tweet-link" target="_blank" rel="noopener">View on X &rarr;</a>
+          <div class="advisory-card">
+            <div class="advisory-icon">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#818cf8" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <div>
+              <div class="advisory-role">Product Advisory Council</div>
+              <div class="advisory-org">Armis</div>
+              <div class="advisory-desc">Invited member of Armis Product Advisory Council &mdash; advising on product strategy for the leading asset intelligence and OT/IoT security platform.</div>
+            </div>
           </div>
         </div>
         <div class="press-mentions">
