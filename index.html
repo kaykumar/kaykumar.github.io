@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -51,15 +51,112 @@
   <style>
     @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Inter:wght@300;400;500;600;700&display=swap');
 
+    /* Theme variables */
+    :root,
+    [data-theme="dark"] {
+      --bg-body: #0a0e17;
+      --bg-card: rgba(13, 17, 23, 0.6);
+      --text-heading: #f0f6fc;
+      --text-body: #c9d1d9;
+      --text-secondary: #8b949e;
+      --text-muted: #7d8590;
+      --text-dim: #484f58;
+      --text-faint: #30363d;
+      --accent: #38bdf8;
+      --accent-purple: #818cf8;
+      --accent-green: #34d399;
+      --accent-red: #ef4444;
+      --accent-yellow: #fbbf24;
+      --border-subtle: rgba(56, 189, 248, 0.06);
+      --border-medium: rgba(56, 189, 248, 0.08);
+      --border-strong: rgba(56, 189, 248, 0.15);
+      --border-accent: rgba(56, 189, 248, 0.3);
+      --surface-subtle: rgba(56, 189, 248, 0.02);
+      --surface-medium: rgba(56, 189, 248, 0.05);
+      --surface-hover: rgba(56, 189, 248, 0.04);
+      --grid-line: rgba(56, 189, 248, 0.03);
+      --scanline-color: rgba(56, 189, 248, 0.008);
+      --orb-opacity: 0.15;
+      --btn-secondary-bg: rgba(255, 255, 255, 0.05);
+      --btn-secondary-border: rgba(255, 255, 255, 0.1);
+      --btn-secondary-hover-bg: rgba(255, 255, 255, 0.1);
+      --card-glow: rgba(56, 189, 248, 0.3);
+      --card-shadow: none;
+      --threat-border: rgba(239, 68, 68, 0.08);
+      --threat-bg: rgba(239, 68, 68, 0.02);
+      --threat-hover-border: rgba(239, 68, 68, 0.2);
+      --threat-hover-bg: rgba(239, 68, 68, 0.04);
+      --threat-shadow: rgba(239, 68, 68, 0.05);
+      --threat-tech: rgba(239, 68, 68, 0.3);
+      --paladin-bg: rgba(52, 211, 153, 0.04);
+      --paladin-border: rgba(52, 211, 153, 0.1);
+      --oss-bg: rgba(52, 211, 153, 0.1);
+      --oss-border: rgba(52, 211, 153, 0.2);
+      --advisory-border: rgba(129, 140, 248, 0.08);
+      --advisory-bg: rgba(129, 140, 248, 0.02);
+      --advisory-hover-border: rgba(129, 140, 248, 0.15);
+      --progress-bg: rgba(251, 191, 36, 0.1);
+      --progress-border: rgba(251, 191, 36, 0.2);
+      --tweet-quote: rgba(56, 189, 248, 0.15);
+    }
+
+    [data-theme="light"] {
+      --bg-body: #f8fafc;
+      --bg-card: rgba(255, 255, 255, 0.85);
+      --text-heading: #0f172a;
+      --text-body: #334155;
+      --text-secondary: #475569;
+      --text-muted: #64748b;
+      --text-dim: #64748b;
+      --text-faint: #94a3b8;
+      --accent: #0284c7;
+      --accent-purple: #6366f1;
+      --accent-green: #059669;
+      --accent-red: #dc2626;
+      --accent-yellow: #d97706;
+      --border-subtle: rgba(0, 0, 0, 0.06);
+      --border-medium: rgba(0, 0, 0, 0.08);
+      --border-strong: rgba(0, 0, 0, 0.12);
+      --border-accent: rgba(2, 132, 199, 0.3);
+      --surface-subtle: rgba(0, 0, 0, 0.02);
+      --surface-medium: rgba(0, 0, 0, 0.04);
+      --surface-hover: rgba(0, 0, 0, 0.03);
+      --grid-line: rgba(0, 0, 0, 0.03);
+      --scanline-color: transparent;
+      --orb-opacity: 0.06;
+      --btn-secondary-bg: rgba(0, 0, 0, 0.04);
+      --btn-secondary-border: rgba(0, 0, 0, 0.1);
+      --btn-secondary-hover-bg: rgba(0, 0, 0, 0.08);
+      --card-glow: rgba(2, 132, 199, 0.15);
+      --card-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+      --threat-border: rgba(220, 38, 38, 0.1);
+      --threat-bg: rgba(220, 38, 38, 0.03);
+      --threat-hover-border: rgba(220, 38, 38, 0.2);
+      --threat-hover-bg: rgba(220, 38, 38, 0.05);
+      --threat-shadow: rgba(220, 38, 38, 0.08);
+      --threat-tech: rgba(220, 38, 38, 0.4);
+      --paladin-bg: rgba(5, 150, 105, 0.05);
+      --paladin-border: rgba(5, 150, 105, 0.12);
+      --oss-bg: rgba(5, 150, 105, 0.08);
+      --oss-border: rgba(5, 150, 105, 0.2);
+      --advisory-border: rgba(99, 102, 241, 0.1);
+      --advisory-bg: rgba(99, 102, 241, 0.03);
+      --advisory-hover-border: rgba(99, 102, 241, 0.2);
+      --progress-bg: rgba(217, 119, 6, 0.1);
+      --progress-border: rgba(217, 119, 6, 0.2);
+      --tweet-quote: rgba(2, 132, 199, 0.15);
+    }
+
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
       font-family: 'Inter', sans-serif;
-      background: #0a0e17;
-      color: #c9d1d9;
+      background: var(--bg-body);
+      color: var(--text-body);
       min-height: 100vh;
       overflow-x: hidden;
       position: relative;
+      transition: background 0.4s ease, color 0.4s ease;
     }
 
     /* Animated grid background */
@@ -68,10 +165,11 @@
       top: 0; left: 0;
       width: 100%; height: 100%;
       background-image:
-        linear-gradient(rgba(56, 189, 248, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(56, 189, 248, 0.03) 1px, transparent 1px);
+        linear-gradient(var(--grid-line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
       background-size: 60px 60px;
       z-index: 0;
+      transition: background-image 0.4s ease;
     }
 
     /* Subtle gradient orbs */
@@ -79,24 +177,25 @@
       position: fixed;
       border-radius: 50%;
       filter: blur(80px);
-      opacity: 0.15;
+      opacity: var(--orb-opacity);
       z-index: 0;
+      transition: opacity 0.4s ease;
     }
     .orb-1 {
       width: 400px; height: 400px;
-      background: #38bdf8;
+      background: var(--accent);
       top: -100px; right: -100px;
       animation: float 8s ease-in-out infinite;
     }
     .orb-2 {
       width: 300px; height: 300px;
-      background: #818cf8;
+      background: var(--accent-purple);
       bottom: -80px; left: -80px;
       animation: float 10s ease-in-out infinite reverse;
     }
     .orb-3 {
       width: 200px; height: 200px;
-      background: #34d399;
+      background: var(--accent-green);
       top: 50%; left: 50%;
       transform: translate(-50%, -50%);
       animation: float 12s ease-in-out infinite;
@@ -118,8 +217,8 @@
         0deg,
         transparent,
         transparent 2px,
-        rgba(56, 189, 248, 0.008) 2px,
-        rgba(56, 189, 248, 0.008) 4px
+        var(--scanline-color) 2px,
+        var(--scanline-color) 4px
       );
       pointer-events: none;
       z-index: 1;
@@ -136,11 +235,40 @@
       padding: 40px 20px;
     }
 
+    /* Theme toggle */
+    .theme-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 100;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1px solid var(--border-strong);
+      background: var(--bg-card);
+      backdrop-filter: blur(12px);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      color: var(--text-muted);
+    }
+    .theme-toggle:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: scale(1.1);
+    }
+    .theme-toggle .icon-sun,
+    .theme-toggle .icon-moon { display: none; }
+    [data-theme="dark"] .theme-toggle .icon-sun { display: block; }
+    [data-theme="light"] .theme-toggle .icon-moon { display: block; }
+
     /* Terminal-style top bar */
     .terminal-tag {
       font-family: 'JetBrains Mono', monospace;
       font-size: 12px;
-      color: #38bdf8;
+      color: var(--accent);
       letter-spacing: 2px;
       text-transform: uppercase;
       margin-bottom: 24px;
@@ -148,22 +276,23 @@
     }
     .terminal-tag::before {
       content: '> ';
-      color: #34d399;
+      color: var(--accent-green);
     }
 
     .name {
       font-size: 52px;
       font-weight: 700;
-      color: #f0f6fc;
+      color: var(--text-heading);
       letter-spacing: -1px;
       margin-bottom: 8px;
       text-align: center;
+      transition: color 0.4s ease;
     }
 
     .title {
       font-size: 18px;
       font-weight: 400;
-      color: #7d8590;
+      color: var(--text-muted);
       margin-bottom: 12px;
       text-align: center;
     }
@@ -171,7 +300,7 @@
     .tagline {
       font-family: 'JetBrains Mono', monospace;
       font-size: 13px;
-      color: #38bdf8;
+      color: var(--accent);
       margin-bottom: 40px;
       text-align: center;
       opacity: 0.8;
@@ -191,15 +320,16 @@
       font-size: 11px;
       padding: 6px 14px;
       border-radius: 20px;
-      border: 1px solid rgba(56, 189, 248, 0.15);
-      background: rgba(56, 189, 248, 0.05);
-      color: #7d8590;
+      border: 1px solid var(--border-strong);
+      background: var(--surface-medium);
+      color: var(--text-muted);
       letter-spacing: 0.5px;
+      transition: all 0.3s ease;
     }
     .pill.highlight {
-      border-color: rgba(56, 189, 248, 0.3);
-      color: #38bdf8;
-      background: rgba(56, 189, 248, 0.08);
+      border-color: var(--border-accent);
+      color: var(--accent);
+      background: var(--surface-medium);
     }
 
     /* Platforms built section */
@@ -211,7 +341,7 @@
     .built-label {
       font-family: 'JetBrains Mono', monospace;
       font-size: 11px;
-      color: #484f58;
+      color: var(--text-dim);
       letter-spacing: 2px;
       text-transform: uppercase;
       text-align: center;
@@ -225,13 +355,13 @@
     .built-card {
       padding: 14px 16px;
       border-radius: 10px;
-      border: 1px solid rgba(56, 189, 248, 0.06);
-      background: rgba(56, 189, 248, 0.02);
+      border: 1px solid var(--border-subtle);
+      background: var(--surface-subtle);
       transition: all 0.3s ease;
     }
     .built-card:hover {
-      border-color: rgba(56, 189, 248, 0.15);
-      background: rgba(56, 189, 248, 0.04);
+      border-color: var(--border-strong);
+      background: var(--surface-hover);
     }
     .built-icon {
       margin-bottom: 8px;
@@ -240,38 +370,39 @@
       font-family: 'JetBrains Mono', monospace;
       font-size: 13px;
       font-weight: 500;
-      color: #f0f6fc;
+      color: var(--text-heading);
       margin-bottom: 4px;
+      transition: color 0.4s ease;
     }
     .built-desc {
       font-size: 11px;
-      color: #484f58;
+      color: var(--text-dim);
       line-height: 1.5;
     }
 
     .built-card.threat-intel {
-      border-color: rgba(239, 68, 68, 0.08);
-      background: rgba(239, 68, 68, 0.02);
+      border-color: var(--threat-border);
+      background: var(--threat-bg);
     }
     .built-card.threat-intel:hover {
-      border-color: rgba(239, 68, 68, 0.2);
-      background: rgba(239, 68, 68, 0.04);
-      box-shadow: 0 0 20px rgba(239, 68, 68, 0.05);
+      border-color: var(--threat-hover-border);
+      background: var(--threat-hover-bg);
+      box-shadow: 0 0 20px var(--threat-shadow);
     }
     .built-card.threat-intel .built-tech {
-      color: rgba(239, 68, 68, 0.3);
+      color: var(--threat-tech);
     }
 
     .paladin-callout {
       margin-top: 10px;
       padding: 8px 10px;
       border-radius: 6px;
-      background: rgba(52, 211, 153, 0.04);
-      border: 1px solid rgba(52, 211, 153, 0.1);
+      background: var(--paladin-bg);
+      border: 1px solid var(--paladin-border);
     }
     .paladin-link {
       text-decoration: none;
-      color: #7d8590;
+      color: var(--text-muted);
       font-size: 11px;
       line-height: 1.5;
       display: flex;
@@ -280,13 +411,13 @@
       transition: color 0.3s;
     }
     .paladin-link:hover {
-      color: #34d399;
+      color: var(--accent-green);
     }
     .paladin-link strong {
-      color: #34d399;
+      color: var(--accent-green);
     }
     .paladin-arrow {
-      color: #34d399;
+      color: var(--accent-green);
       flex-shrink: 0;
       margin-top: 1px;
     }
@@ -300,9 +431,9 @@
       font-size: 9px;
       padding: 2px 7px;
       border-radius: 10px;
-      background: rgba(52, 211, 153, 0.1);
-      color: #34d399;
-      border: 1px solid rgba(52, 211, 153, 0.2);
+      background: var(--oss-bg);
+      color: var(--accent-green);
+      border: 1px solid var(--oss-border);
       vertical-align: middle;
       margin-left: 6px;
       letter-spacing: 0.5px;
@@ -311,7 +442,7 @@
     .built-tech {
       font-family: 'JetBrains Mono', monospace;
       font-size: 10px;
-      color: #30363d;
+      color: var(--text-faint);
       margin-top: 6px;
       letter-spacing: 0.3px;
     }
@@ -325,7 +456,7 @@
     .endorsement-label {
       font-family: 'JetBrains Mono', monospace;
       font-size: 11px;
-      color: #484f58;
+      color: var(--text-dim);
       letter-spacing: 2px;
       text-transform: uppercase;
       text-align: center;
@@ -334,13 +465,13 @@
     .tweet-card {
       padding: 20px 24px;
       border-radius: 12px;
-      border: 1px solid rgba(56, 189, 248, 0.08);
-      background: rgba(56, 189, 248, 0.02);
+      border: 1px solid var(--border-medium);
+      background: var(--surface-subtle);
       position: relative;
       transition: all 0.3s ease;
     }
     .tweet-card:hover {
-      border-color: rgba(56, 189, 248, 0.15);
+      border-color: var(--border-strong);
     }
     .tweet-card::before {
       content: '\201C';
@@ -348,7 +479,7 @@
       top: 12px;
       left: 16px;
       font-size: 40px;
-      color: rgba(56, 189, 248, 0.15);
+      color: var(--tweet-quote);
       font-family: Georgia, serif;
       line-height: 1;
     }
@@ -362,28 +493,28 @@
       width: 36px;
       height: 36px;
       border-radius: 50%;
-      background: linear-gradient(135deg, #38bdf8, #818cf8);
+      background: linear-gradient(135deg, var(--accent), var(--accent-purple));
       display: flex;
       align-items: center;
       justify-content: center;
       font-weight: 700;
       font-size: 14px;
-      color: #0a0e17;
+      color: var(--bg-body);
       flex-shrink: 0;
     }
     .tweet-author {
       font-size: 13px;
       font-weight: 600;
-      color: #f0f6fc;
+      color: var(--text-heading);
     }
     .tweet-handle {
       font-family: 'JetBrains Mono', monospace;
       font-size: 11px;
-      color: #484f58;
+      color: var(--text-dim);
     }
     .tweet-body {
       font-size: 13px;
-      color: #8b949e;
+      color: var(--text-secondary);
       line-height: 1.6;
       padding-left: 46px;
       font-style: italic;
@@ -398,12 +529,12 @@
     .tweet-date {
       font-family: 'JetBrains Mono', monospace;
       font-size: 10px;
-      color: #30363d;
+      color: var(--text-faint);
     }
     .tweet-link {
       font-family: 'JetBrains Mono', monospace;
       font-size: 10px;
-      color: #38bdf8;
+      color: var(--accent);
       text-decoration: none;
       opacity: 0.6;
       transition: opacity 0.3s;
@@ -421,7 +552,7 @@
     .press-tag {
       font-family: 'JetBrains Mono', monospace;
       font-size: 10px;
-      color: #30363d;
+      color: var(--text-faint);
       letter-spacing: 0.5px;
     }
 
@@ -434,15 +565,15 @@
     .advisory-card {
       padding: 20px 24px;
       border-radius: 12px;
-      border: 1px solid rgba(129, 140, 248, 0.08);
-      background: rgba(129, 140, 248, 0.02);
+      border: 1px solid var(--advisory-border);
+      background: var(--advisory-bg);
       display: flex;
       align-items: center;
       gap: 16px;
       transition: all 0.3s ease;
     }
     .advisory-card:hover {
-      border-color: rgba(129, 140, 248, 0.15);
+      border-color: var(--advisory-hover-border);
     }
     .advisory-icon {
       flex-shrink: 0;
@@ -450,18 +581,18 @@
     .advisory-role {
       font-size: 13px;
       font-weight: 600;
-      color: #f0f6fc;
+      color: var(--text-heading);
       margin-bottom: 2px;
     }
     .advisory-org {
       font-family: 'JetBrains Mono', monospace;
       font-size: 12px;
-      color: #818cf8;
+      color: var(--accent-purple);
       margin-bottom: 4px;
     }
     .advisory-desc {
       font-size: 11px;
-      color: #484f58;
+      color: var(--text-dim);
       line-height: 1.5;
     }
     .credentials-section {
@@ -472,7 +603,7 @@
     .credentials-label {
       font-family: 'JetBrains Mono', monospace;
       font-size: 11px;
-      color: #484f58;
+      color: var(--text-dim);
       letter-spacing: 2px;
       text-transform: uppercase;
       text-align: center;
@@ -489,12 +620,12 @@
       gap: 12px;
       padding: 12px 16px;
       border-radius: 10px;
-      border: 1px solid rgba(56, 189, 248, 0.06);
-      background: rgba(56, 189, 248, 0.02);
+      border: 1px solid var(--border-subtle);
+      background: var(--surface-subtle);
       transition: all 0.3s ease;
     }
     .credential-item:hover {
-      border-color: rgba(56, 189, 248, 0.15);
+      border-color: var(--border-strong);
     }
     .credential-icon {
       flex-shrink: 0;
@@ -503,12 +634,12 @@
     .credential-name {
       font-size: 12px;
       font-weight: 500;
-      color: #f0f6fc;
+      color: var(--text-heading);
     }
     .credential-org {
       font-family: 'JetBrains Mono', monospace;
       font-size: 10px;
-      color: #484f58;
+      color: var(--text-dim);
       margin-top: 2px;
     }
     .in-progress-badge {
@@ -516,9 +647,9 @@
       font-size: 9px;
       padding: 2px 7px;
       border-radius: 10px;
-      background: rgba(251, 191, 36, 0.1);
-      color: #fbbf24;
-      border: 1px solid rgba(251, 191, 36, 0.2);
+      background: var(--progress-bg);
+      color: var(--accent-yellow);
+      border: 1px solid var(--progress-border);
       vertical-align: middle;
       margin-left: 6px;
       letter-spacing: 0.5px;
@@ -550,21 +681,24 @@
       font-family: 'Inter', sans-serif;
     }
     .btn-primary {
-      background: linear-gradient(135deg, #38bdf8, #818cf8);
+      background: linear-gradient(135deg, var(--accent), var(--accent-purple));
+      color: #ffffff;
+    }
+    [data-theme="dark"] .btn-primary {
       color: #0a0e17;
     }
     .btn-primary:hover {
-      box-shadow: 0 0 30px rgba(56, 189, 248, 0.3);
+      box-shadow: 0 0 30px var(--card-glow);
       transform: translateY(-2px);
     }
     .btn-secondary {
-      background: rgba(255, 255, 255, 0.05);
-      color: #c9d1d9;
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: var(--btn-secondary-bg);
+      color: var(--text-body);
+      border: 1px solid var(--btn-secondary-border);
     }
     .btn-secondary:hover {
-      background: rgba(255, 255, 255, 0.1);
-      border-color: rgba(56, 189, 248, 0.3);
+      background: var(--btn-secondary-hover-bg);
+      border-color: var(--border-accent);
       transform: translateY(-2px);
     }
 
@@ -574,7 +708,7 @@
       gap: 32px;
     }
     .socials a {
-      color: #484f58;
+      color: var(--text-dim);
       text-decoration: none;
       font-size: 13px;
       font-weight: 500;
@@ -585,7 +719,7 @@
       gap: 6px;
     }
     .socials a:hover {
-      color: #38bdf8;
+      color: var(--accent);
     }
     .socials a::before {
       content: '';
@@ -593,7 +727,7 @@
       width: 4px;
       height: 4px;
       border-radius: 50%;
-      background: #38bdf8;
+      background: var(--accent);
       opacity: 0;
       transition: opacity 0.3s;
     }
@@ -603,10 +737,10 @@
 
     /* Decorative border card */
     .card {
-      border: 1px solid rgba(56, 189, 248, 0.08);
+      border: 1px solid var(--border-medium);
       border-radius: 16px;
       padding: 60px 48px;
-      background: rgba(13, 17, 23, 0.6);
+      background: var(--bg-card);
       backdrop-filter: blur(20px);
       display: flex;
       flex-direction: column;
@@ -615,13 +749,15 @@
       overflow: hidden;
       max-width: 960px;
       width: 100%;
+      box-shadow: var(--card-shadow);
+      transition: background 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
     }
     .card::before {
       content: '';
       position: absolute;
       top: 0; left: 0; right: 0;
       height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.3), transparent);
+      background: linear-gradient(90deg, transparent, var(--card-glow), transparent);
     }
 
     /* Shield icon */
@@ -640,7 +776,7 @@
       padding: 20px;
       font-family: 'JetBrains Mono', monospace;
       font-size: 11px;
-      color: #30363d;
+      color: var(--text-faint);
     }
 
     @media (max-width: 900px) {
@@ -653,10 +789,17 @@
       .actions { flex-direction: column; align-items: center; }
       .pills { gap: 6px; }
       .built-grid { grid-template-columns: 1fr; }
+      .theme-toggle { top: 12px; right: 12px; width: 36px; height: 36px; }
     }
   </style>
 </head>
 <body>
+
+  <!-- Theme toggle -->
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark theme">
+    <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+    <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+  </button>
 
   <div class="grid-bg"></div>
   <div class="orb orb-1"></div>
@@ -668,7 +811,7 @@
     <div class="card">
 
       <!-- Shield SVG -->
-      <svg class="shield" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <svg class="shield" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
         <path d="M9 12l2 2 4-4" opacity="0.6"/>
       </svg>
@@ -685,7 +828,7 @@
         <div class="built-grid">
           <div class="built-card">
             <div class="built-icon">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
             </div>
             <div class="built-name">DataCraft</div>
             <div class="built-desc">Enterprise data intelligence platform built at Tesla. Databricks-like lakehouse architecture running Apache Spark on Kubernetes with integrated secret management, RBAC, and data governance. Powers security analytics, threat detection pipelines, and centralized security data lake across the organization.</div>
@@ -693,7 +836,7 @@
           </div>
           <div class="built-card threat-intel">
             <div class="built-icon">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6" opacity="0.6"/><circle cx="12" cy="12" r="2" fill="#ef4444"/><line x1="12" y1="2" x2="12" y2="5" opacity="0.4"/><line x1="12" y1="19" x2="12" y2="22" opacity="0.4"/><line x1="2" y1="12" x2="5" y2="12" opacity="0.4"/><line x1="19" y1="12" x2="22" y2="12" opacity="0.4"/></svg>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent-red)" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6" opacity="0.6"/><circle cx="12" cy="12" r="2" fill="var(--accent-red)"/><line x1="12" y1="2" x2="12" y2="5" opacity="0.4"/><line x1="12" y1="19" x2="12" y2="22" opacity="0.4"/><line x1="2" y1="12" x2="5" y2="12" opacity="0.4"/><line x1="19" y1="12" x2="22" y2="12" opacity="0.4"/></svg>
             </div>
             <div class="built-name">Threat Intelligence Center</div>
             <div class="built-desc">Centralized threat intelligence platform built at Tesla for proactive threat detection, IOC correlation, and automated incident response across cloud and on-premises environments. Aggregates feeds from multiple intel sources, enriches alerts with context, and drives real-time security operations.</div>
@@ -701,7 +844,7 @@
           </div>
           <div class="built-card">
             <div class="built-icon">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#818cf8" stroke-width="1.5"><path d="M12 2a4 4 0 0 0-4 4c0 2 2 3 2 6H6a2 2 0 0 0-2 2v2h16v-2a2 2 0 0 0-2-2h-4c0-3 2-4 2-6a4 4 0 0 0-4-4z"/><path d="M9 18v1a3 3 0 0 0 6 0v-1"/></svg>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent-purple)" stroke-width="1.5"><path d="M12 2a4 4 0 0 0-4 4c0 2 2 3 2 6H6a2 2 0 0 0-2 2v2h16v-2a2 2 0 0 0-2-2h-4c0-3 2-4 2-6a4 4 0 0 0-4-4z"/><path d="M9 18v1a3 3 0 0 0 6 0v-1"/></svg>
             </div>
             <div class="built-name">AI Helpdesk Platform</div>
             <div class="built-desc">Enterprise-grade, self-service AI helpdesk platform built at Tesla. Organizations configure their own integrations (email, Slack, ticketing systems) and plug in knowledge sources (Confluence, SharePoint, policy docs, mailboxes). The platform ingests, indexes, and learns from these sources using LLMs to autopilot tier-1 support &mdash; auto-classifying tickets, drafting contextual responses, and escalating intelligently. Designed as a multi-tenant platform with admin console for managing integrations, knowledge pipelines, and response tuning.</div>
@@ -709,7 +852,7 @@
           </div>
           <div class="built-card">
             <div class="built-icon">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/><path d="M7 8h2m2 0h2m2 0h2" opacity="0.6"/></svg>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/><path d="M7 8h2m2 0h2m2 0h2" opacity="0.6"/></svg>
             </div>
             <div class="built-name">Security &amp; Compliance Posture Platform</div>
             <div class="built-desc">Enterprise IT and OT security posture management platform built at Tesla. Provides 24/7 continuous monitoring across cloud (AWS, Azure), on-premises IT infrastructure, and operational technology (OT) environments. Automated policy evaluation, drift detection, and one-click remediation. Unified compliance tracking against CIS benchmarks, SOC 2, NIST, and internal security standards &mdash; giving leadership a single pane of glass into the organization's security posture.</div>
@@ -717,7 +860,7 @@
           </div>
           <div class="built-card">
             <div class="built-icon">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="1.5"><circle cx="12" cy="5" r="2"/><circle cx="5" cy="12" r="2"/><circle cx="19" cy="12" r="2"/><circle cx="8" cy="19" r="2"/><circle cx="16" cy="19" r="2"/><line x1="12" y1="7" x2="5" y2="10"/><line x1="12" y1="7" x2="19" y2="10"/><line x1="5" y1="14" x2="8" y2="17"/><line x1="19" y1="14" x2="16" y2="17"/><line x1="8" y1="19" x2="16" y2="19" opacity="0.4"/><line x1="12" y1="7" x2="12" y2="16" opacity="0.3"/></svg>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent-green)" stroke-width="1.5"><circle cx="12" cy="5" r="2"/><circle cx="5" cy="12" r="2"/><circle cx="19" cy="12" r="2"/><circle cx="8" cy="19" r="2"/><circle cx="16" cy="19" r="2"/><line x1="12" y1="7" x2="5" y2="10"/><line x1="12" y1="7" x2="19" y2="10"/><line x1="5" y1="14" x2="8" y2="17"/><line x1="19" y1="14" x2="16" y2="17"/><line x1="8" y1="19" x2="16" y2="19" opacity="0.4"/><line x1="12" y1="7" x2="12" y2="16" opacity="0.3"/></svg>
             </div>
             <div class="built-name">AI Agents Platform</div>
             <div class="built-desc">Enterprise AI agents platform built at Tesla, powered by Graph RAG architecture. Constructs knowledge graphs from security data lake, vulnerability scans, asset inventories, and remediation playbooks &mdash; capturing entity relationships (services &rarr; vulnerabilities &rarr; owners &rarr; remediation steps) for richer, context-aware retrieval. Autonomous agents traverse the graph to reason over multi-hop queries, auto-triage security findings, generate fix recommendations, and orchestrate remediation workflows. Enables application teams to resolve security issues through natural language &mdash; shifting security left at developer speed.</div>
@@ -726,7 +869,7 @@
           <div class="built-card">
             <a href="https://pacbot.org" class="built-link" target="_blank" rel="noopener">
               <div class="built-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="1.5"><path d="M9 12l2 2 4-4"/><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent-green)" stroke-width="1.5"><path d="M9 12l2 2 4-4"/><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
               </div>
               <div class="built-name">PacBot <span class="oss-badge">Open Source</span></div>
               <div class="built-desc">Continuous security &amp; compliance platform built at T-Mobile. Policy-as-code engine that assesses cloud infrastructure, tracks violations, and auto-remediates misconfigurations. 1,300+ GitHub stars, 280+ forks. Apache 2.0 licensed.</div>
@@ -759,7 +902,7 @@
         <div class="credentials-grid">
           <div class="credential-item">
             <div class="credential-icon">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#818cf8" stroke-width="1.5"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1.66 2.69 3 6 3s6-1.34 6-3v-5"/></svg>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent-purple)" stroke-width="1.5"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1.66 2.69 3 6 3s6-1.34 6-3v-5"/></svg>
             </div>
             <div>
               <div class="credential-name">Leadership &amp; Management <span class="in-progress-badge">In Progress</span></div>
@@ -768,7 +911,7 @@
           </div>
           <div class="credential-item">
             <div class="credential-icon">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#818cf8" stroke-width="1.5"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1.66 2.69 3 6 3s6-1.34 6-3v-5"/></svg>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent-purple)" stroke-width="1.5"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1.66 2.69 3 6 3s6-1.34 6-3v-5"/></svg>
             </div>
             <div>
               <div class="credential-name">Machine Learning</div>
@@ -777,7 +920,7 @@
           </div>
           <div class="credential-item">
             <div class="credential-icon">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#818cf8" stroke-width="1.5"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1.66 2.69 3 6 3s6-1.34 6-3v-5"/></svg>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent-purple)" stroke-width="1.5"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1.66 2.69 3 6 3s6-1.34 6-3v-5"/></svg>
             </div>
             <div>
               <div class="credential-name">Engineering Leadership</div>
@@ -786,7 +929,7 @@
           </div>
           <div class="credential-item">
             <div class="credential-icon">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="1.5"><path d="M4 7V4a2 2 0 0 1 2-2h8.5L20 7.5V20a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-3"/><polyline points="14 2 14 8 20 8"/><path d="M4 15h9"/><path d="M10 12l3 3-3 3"/></svg>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5"><path d="M4 7V4a2 2 0 0 1 2-2h8.5L20 7.5V20a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-3"/><polyline points="14 2 14 8 20 8"/><path d="M4 15h9"/><path d="M10 12l3 3-3 3"/></svg>
             </div>
             <div>
               <div class="credential-name">AWS Solutions Architect</div>
@@ -795,7 +938,7 @@
           </div>
           <div class="credential-item">
             <div class="credential-icon">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent-green)" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
             </div>
             <div>
               <div class="credential-name">Generative AI Fundamentals</div>
@@ -827,7 +970,7 @@
           </div>
           <div class="advisory-card">
             <div class="advisory-icon">
-              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#818cf8" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--accent-purple)" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
             </div>
             <div>
               <div class="advisory-role">Product Advisory Council</div>
@@ -873,6 +1016,25 @@
   </div>
 
   <div class="footer">23+ years securing systems &amp; leading teams</div>
+
+  <script>
+    (function() {
+      var toggle = document.getElementById('themeToggle');
+      var html = document.documentElement;
+      var stored = localStorage.getItem('theme');
+      if (stored) {
+        html.setAttribute('data-theme', stored);
+      } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+        html.setAttribute('data-theme', 'light');
+      }
+      toggle.addEventListener('click', function() {
+        var current = html.getAttribute('data-theme');
+        var next = current === 'dark' ? 'light' : 'dark';
+        html.setAttribute('data-theme', next);
+        localStorage.setItem('theme', next);
+      });
+    })();
+  </script>
 
 </body>
 </html>
