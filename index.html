@@ -352,6 +352,96 @@
       grid-template-columns: 1fr 1fr 1fr;
       gap: 12px;
     }
+    /* Flip card container */
+    .flip-container {
+      perspective: 1000px;
+      cursor: pointer;
+    }
+    .flip-inner {
+      position: relative;
+      width: 100%;
+      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      transform-style: preserve-3d;
+    }
+    .flip-container.flipped .flip-inner {
+      transform: rotateY(180deg);
+    }
+    .flip-front, .flip-back {
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+    }
+    .flip-front {
+      position: relative;
+    }
+    .flip-back {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      transform: rotateY(180deg);
+      min-height: 100%;
+    }
+    .flip-hint {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9px;
+      color: var(--text-faint);
+      margin-top: 8px;
+      letter-spacing: 0.5px;
+      opacity: 0.6;
+      transition: opacity 0.3s;
+    }
+    .flip-container:hover .flip-hint {
+      opacity: 1;
+      color: var(--accent);
+    }
+    .flip-container.flipped .flip-hint-front { display: none; }
+    .flip-back-content {
+      padding: 14px 16px;
+      border-radius: 10px;
+      border: 1px solid var(--border-accent);
+      background: var(--surface-medium);
+      height: 100%;
+    }
+    .flip-back-title {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .flip-back-close {
+      font-size: 10px;
+      color: var(--text-faint);
+      letter-spacing: 0.5px;
+    }
+    .flip-back-details {
+      font-size: 11px;
+      color: var(--text-body);
+      line-height: 1.6;
+    }
+    .flip-back-details ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .flip-back-details li {
+      padding: 3px 0;
+      position: relative;
+      padding-left: 14px;
+    }
+    .flip-back-details li::before {
+      content: '>';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+    }
+    .flip-back-details strong {
+      color: var(--text-heading);
+    }
+
     .built-card {
       padding: 14px 16px;
       border-radius: 10px;
@@ -391,6 +481,13 @@
     }
     .built-card.threat-intel .built-tech {
       color: var(--threat-tech);
+    }
+    /* Threat intel flip-back style */
+    .flip-container:nth-child(2) .flip-back-content {
+      border-color: var(--threat-hover-border);
+    }
+    .flip-container:nth-child(2) .flip-back-title {
+      color: var(--accent-red);
     }
 
     .paladin-callout {
@@ -826,61 +923,185 @@
       <div class="built-section">
         <p class="built-label">Platforms I've Built</p>
         <div class="built-grid">
-          <div class="built-card">
-            <div class="built-icon">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-            </div>
-            <div class="built-name">DataCraft</div>
-            <div class="built-desc">Enterprise data intelligence platform built at Tesla. Databricks-like lakehouse architecture running Apache Spark on Kubernetes with integrated secret management, RBAC, and data governance. Ingests <strong>300+ GB daily</strong>, serving as the foundational intelligence layer powering all AI security tools across the organization.</div>
-            <div class="built-tech">Spark &bull; Kubernetes &bull; Secret Mgmt &bull; RBAC &bull; 300+ GB/day</div>
-          </div>
-          <div class="built-card threat-intel">
-            <div class="built-icon">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent-red)" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6" opacity="0.6"/><circle cx="12" cy="12" r="2" fill="var(--accent-red)"/><line x1="12" y1="2" x2="12" y2="5" opacity="0.4"/><line x1="12" y1="19" x2="12" y2="22" opacity="0.4"/><line x1="2" y1="12" x2="5" y2="12" opacity="0.4"/><line x1="19" y1="12" x2="22" y2="12" opacity="0.4"/></svg>
-            </div>
-            <div class="built-name">Threat Intelligence Center</div>
-            <div class="built-desc">Centralized threat intelligence platform built at Tesla for proactive threat detection, IOC correlation, and automated incident response across cloud and on-premises environments. Aggregates feeds from multiple intel sources, enriches alerts with context, and drives real-time security operations.</div>
-            <div class="built-tech">Threat Feeds &bull; IOC Correlation &bull; SIEM &bull; Incident Response &bull; Real-time</div>
-          </div>
-          <div class="built-card">
-            <div class="built-icon">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent-purple)" stroke-width="1.5"><path d="M12 2a4 4 0 0 0-4 4c0 2 2 3 2 6H6a2 2 0 0 0-2 2v2h16v-2a2 2 0 0 0-2-2h-4c0-3 2-4 2-6a4 4 0 0 0-4-4z"/><path d="M9 18v1a3 3 0 0 0 6 0v-1"/></svg>
-            </div>
-            <div class="built-name">AI Helpdesk Platform</div>
-            <div class="built-desc">Enterprise-grade, self-service AI helpdesk platform built at Tesla. Organizations configure their own integrations (email, Slack, ticketing systems) and plug in knowledge sources (Confluence, SharePoint, policy docs, mailboxes). The platform ingests, indexes, and learns from these sources using LLMs to autopilot tier-1 support &mdash; auto-classifying tickets, drafting contextual responses, and escalating intelligently. Resolves <strong>65% of tier-1 security tickets</strong> without human intervention. Designed as a multi-tenant platform with admin console for managing integrations, knowledge pipelines, and response tuning.</div>
-            <div class="built-tech">LLMs &bull; Multi-Tenant &bull; Configurable Integrations &bull; Knowledge Pipelines &bull; Admin Console</div>
-          </div>
-          <div class="built-card">
-            <div class="built-icon">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/><path d="M7 8h2m2 0h2m2 0h2" opacity="0.6"/></svg>
-            </div>
-            <div class="built-name">Security &amp; Compliance Posture Platform</div>
-            <div class="built-desc">Enterprise IT and OT security posture management platform built at Tesla. Monitors <strong>300K+ assets</strong> against <strong>300+ policies</strong> with 24/7 continuous monitoring across cloud (AWS, Azure), on-premises IT infrastructure, and operational technology (OT) environments. Automated policy evaluation, drift detection, and one-click remediation. Unified compliance tracking against CIS benchmarks, SOC 2, NIST, and internal security standards &mdash; giving leadership a single pane of glass into the organization's security posture.</div>
-            <div class="built-tech">300K+ Assets &bull; 300+ Policies &bull; IT/OT &bull; NIST &bull; CIS &bull; SOC 2</div>
-          </div>
-          <div class="built-card">
-            <div class="built-icon">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent-green)" stroke-width="1.5"><circle cx="12" cy="5" r="2"/><circle cx="5" cy="12" r="2"/><circle cx="19" cy="12" r="2"/><circle cx="8" cy="19" r="2"/><circle cx="16" cy="19" r="2"/><line x1="12" y1="7" x2="5" y2="10"/><line x1="12" y1="7" x2="19" y2="10"/><line x1="5" y1="14" x2="8" y2="17"/><line x1="19" y1="14" x2="16" y2="17"/><line x1="8" y1="19" x2="16" y2="19" opacity="0.4"/><line x1="12" y1="7" x2="12" y2="16" opacity="0.3"/></svg>
-            </div>
-            <div class="built-name">AI Agents Platform</div>
-            <div class="built-desc">Enterprise AI agents platform built at Tesla, powered by Graph RAG architecture. Constructs knowledge graphs from security data lake, vulnerability scans, asset inventories, and remediation playbooks &mdash; capturing entity relationships (services &rarr; vulnerabilities &rarr; owners &rarr; remediation steps) for richer, context-aware retrieval. Autonomous agents auto-triage <strong>tens of thousands of findings monthly</strong>, <strong>reducing mean-time-to-remediate by 90%</strong>. Policy-based control plane enforces human-in-the-loop review for high-risk actions. Enables engineering teams to remediate through natural language &mdash; shifting security left at developer speed.</div>
-            <div class="built-tech">Graph RAG &bull; Knowledge Graphs &bull; AI Agents &bull; 90% MTTR Reduction &bull; Human-in-the-Loop</div>
-          </div>
-          <div class="built-card">
-            <a href="https://pacbot.org" class="built-link" target="_blank" rel="noopener">
-              <div class="built-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent-green)" stroke-width="1.5"><path d="M9 12l2 2 4-4"/><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <div class="flip-container" onclick="this.classList.toggle('flipped')">
+            <div class="flip-inner">
+              <div class="flip-front">
+                <div class="built-card">
+                  <div class="built-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                  </div>
+                  <div class="built-name">DataCraft</div>
+                  <div class="built-desc">Enterprise data intelligence platform built at Tesla. Databricks-like lakehouse architecture running Apache Spark on Kubernetes with integrated secret management, RBAC, and data governance. Ingests <strong>300+ GB daily</strong>, serving as the foundational intelligence layer powering all AI security tools across the organization.</div>
+                  <div class="built-tech">Spark &bull; Kubernetes &bull; Secret Mgmt &bull; RBAC &bull; 300+ GB/day</div>
+                  <div class="flip-hint flip-hint-front">click to see details &rarr;</div>
+                </div>
               </div>
-              <div class="built-name">PacBot <span class="oss-badge">Open Source</span></div>
-              <div class="built-desc">Continuous security &amp; compliance platform built at T-Mobile. Policy-as-code engine enforcing <strong>thousands of policies</strong> across 500+ accounts, auto-remediating <strong>tens of thousands of violations</strong>. 1,300+ GitHub stars, 280+ forks. Apache 2.0 licensed.</div>
-              <div class="built-tech">AWS &bull; Lambda &bull; Policy-as-Code &bull; AutoFix &bull; Multi-Account</div>
-              <div class="paladin-callout">
-                <a href="https://paladincloud.io/" class="paladin-link" target="_blank" rel="noopener">
-                  <span class="paladin-arrow">&rarr;</span>
-                  <span>Became the foundation of <strong>Paladin Cloud</strong> &mdash; AI-powered cloud security platform. Raised <strong>$3.3M seed</strong> led by Okapi Venture Capital &amp; Bowery Capital, with participation from <strong>Samsung Next</strong>, <strong>T-Mobile Ventures</strong>, and UST. Featured on <strong>TechCrunch</strong> &amp; <strong>SC Magazine</strong>.</span>
-                </a>
+              <div class="flip-back">
+                <div class="flip-back-content">
+                  <div class="flip-back-title">DataCraft <span class="flip-back-close">click to go back</span></div>
+                  <div class="flip-back-details">
+                    <ul>
+                      <li><strong>Architecture:</strong> Databricks-like lakehouse with Spark on Kubernetes</li>
+                      <li><strong>Scale:</strong> 300+ GB daily ingestion, high availability</li>
+                      <li><strong>Data Governance:</strong> RBAC, cryptographic secret management, end-to-end lineage</li>
+                      <li><strong>Consumers:</strong> Cross-functional &mdash; security ops, threat intel, compliance, ML teams</li>
+                      <li><strong>Pipelines:</strong> Real-time ingestion, canonical datasets, batch &amp; streaming</li>
+                      <li><strong>Impact:</strong> Foundational data layer powering all 4 AI/ML security platforms</li>
+                    </ul>
+                  </div>
+                </div>
               </div>
-            </a>
+            </div>
+          </div>
+          <div class="flip-container" onclick="this.classList.toggle('flipped')">
+            <div class="flip-inner">
+              <div class="flip-front">
+                <div class="built-card threat-intel">
+                  <div class="built-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent-red)" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6" opacity="0.6"/><circle cx="12" cy="12" r="2" fill="var(--accent-red)"/><line x1="12" y1="2" x2="12" y2="5" opacity="0.4"/><line x1="12" y1="19" x2="12" y2="22" opacity="0.4"/><line x1="2" y1="12" x2="5" y2="12" opacity="0.4"/><line x1="19" y1="12" x2="22" y2="12" opacity="0.4"/></svg>
+                  </div>
+                  <div class="built-name">Threat Intelligence Center</div>
+                  <div class="built-desc">Centralized threat intelligence platform built at Tesla for proactive threat detection, IOC correlation, and automated incident response across cloud and on-premises environments. Aggregates feeds from multiple intel sources, enriches alerts with context, and drives real-time security operations.</div>
+                  <div class="built-tech">Threat Feeds &bull; IOC Correlation &bull; SIEM &bull; Incident Response &bull; Real-time</div>
+                  <div class="flip-hint flip-hint-front">click to see details &rarr;</div>
+                </div>
+              </div>
+              <div class="flip-back">
+                <div class="flip-back-content">
+                  <div class="flip-back-title">Threat Intelligence Center <span class="flip-back-close">click to go back</span></div>
+                  <div class="flip-back-details">
+                    <ul>
+                      <li><strong>Feeds:</strong> Aggregates multiple threat intel sources &amp; OSINT feeds</li>
+                      <li><strong>IOC Correlation:</strong> Proactive indicator matching across cloud &amp; on-prem</li>
+                      <li><strong>Alert Enrichment:</strong> AI-powered context injection into security alerts</li>
+                      <li><strong>Incident Response:</strong> Automated playbook execution &amp; orchestration</li>
+                      <li><strong>Coverage:</strong> Unified view across AWS, Azure, and on-premises environments</li>
+                      <li><strong>Impact:</strong> Drives real-time security operations and threat hunting</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="flip-container" onclick="this.classList.toggle('flipped')">
+            <div class="flip-inner">
+              <div class="flip-front">
+                <div class="built-card">
+                  <div class="built-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent-purple)" stroke-width="1.5"><path d="M12 2a4 4 0 0 0-4 4c0 2 2 3 2 6H6a2 2 0 0 0-2 2v2h16v-2a2 2 0 0 0-2-2h-4c0-3 2-4 2-6a4 4 0 0 0-4-4z"/><path d="M9 18v1a3 3 0 0 0 6 0v-1"/></svg>
+                  </div>
+                  <div class="built-name">AI Helpdesk Platform</div>
+                  <div class="built-desc">Enterprise-grade, self-service AI helpdesk platform built at Tesla. Organizations configure their own integrations (email, Slack, ticketing systems) and plug in knowledge sources (Confluence, SharePoint, policy docs, mailboxes). Resolves <strong>65% of tier-1 security tickets</strong> without human intervention.</div>
+                  <div class="built-tech">LLMs &bull; Multi-Tenant &bull; Configurable Integrations &bull; Knowledge Pipelines &bull; Admin Console</div>
+                  <div class="flip-hint flip-hint-front">click to see details &rarr;</div>
+                </div>
+              </div>
+              <div class="flip-back">
+                <div class="flip-back-content">
+                  <div class="flip-back-title">AI Helpdesk Platform <span class="flip-back-close">click to go back</span></div>
+                  <div class="flip-back-details">
+                    <ul>
+                      <li><strong>Architecture:</strong> Multi-tenant SaaS with admin console</li>
+                      <li><strong>Integrations:</strong> Email, Slack, ticketing systems, configurable per tenant</li>
+                      <li><strong>Knowledge Sources:</strong> Confluence, SharePoint, policy docs, mailboxes</li>
+                      <li><strong>AI Pipeline:</strong> LLM-powered ingestion, indexing, and response generation</li>
+                      <li><strong>Capabilities:</strong> Auto-classify, draft responses, intelligent escalation</li>
+                      <li><strong>Impact:</strong> 65% of tier-1 security tickets resolved autonomously</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="flip-container" onclick="this.classList.toggle('flipped')">
+            <div class="flip-inner">
+              <div class="flip-front">
+                <div class="built-card">
+                  <div class="built-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/><path d="M7 8h2m2 0h2m2 0h2" opacity="0.6"/></svg>
+                  </div>
+                  <div class="built-name">Security &amp; Compliance Posture Platform</div>
+                  <div class="built-desc">Enterprise IT and OT security posture management platform built at Tesla. Monitors <strong>300K+ assets</strong> against <strong>300+ policies</strong> across cloud, on-prem IT, and OT environments. Unified compliance tracking &mdash; single pane of glass for leadership.</div>
+                  <div class="built-tech">300K+ Assets &bull; 300+ Policies &bull; IT/OT &bull; NIST &bull; CIS &bull; SOC 2</div>
+                  <div class="flip-hint flip-hint-front">click to see details &rarr;</div>
+                </div>
+              </div>
+              <div class="flip-back">
+                <div class="flip-back-content">
+                  <div class="flip-back-title">Posture Platform <span class="flip-back-close">click to go back</span></div>
+                  <div class="flip-back-details">
+                    <ul>
+                      <li><strong>Scale:</strong> 300K+ assets monitored 24/7</li>
+                      <li><strong>Policies:</strong> 300+ rules across CIS, SOC 2, NIST, internal standards</li>
+                      <li><strong>Coverage:</strong> AWS, Azure, on-premises IT, and OT environments</li>
+                      <li><strong>Automation:</strong> Policy evaluation, drift detection, one-click remediation</li>
+                      <li><strong>Reporting:</strong> Single pane of glass for leadership visibility</li>
+                      <li><strong>Impact:</strong> Transformed compliance from manual to continuous monitoring</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="flip-container" onclick="this.classList.toggle('flipped')">
+            <div class="flip-inner">
+              <div class="flip-front">
+                <div class="built-card">
+                  <div class="built-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent-green)" stroke-width="1.5"><circle cx="12" cy="5" r="2"/><circle cx="5" cy="12" r="2"/><circle cx="19" cy="12" r="2"/><circle cx="8" cy="19" r="2"/><circle cx="16" cy="19" r="2"/><line x1="12" y1="7" x2="5" y2="10"/><line x1="12" y1="7" x2="19" y2="10"/><line x1="5" y1="14" x2="8" y2="17"/><line x1="19" y1="14" x2="16" y2="17"/><line x1="8" y1="19" x2="16" y2="19" opacity="0.4"/><line x1="12" y1="7" x2="12" y2="16" opacity="0.3"/></svg>
+                  </div>
+                  <div class="built-name">AI Agents Platform</div>
+                  <div class="built-desc">Enterprise AI agents platform built at Tesla, powered by Graph RAG. Autonomous agents auto-triage <strong>tens of thousands of findings monthly</strong>, <strong>reducing MTTR by 90%</strong>. Human-in-the-loop guardrails for high-risk actions.</div>
+                  <div class="built-tech">Graph RAG &bull; Knowledge Graphs &bull; AI Agents &bull; 90% MTTR Reduction &bull; Human-in-the-Loop</div>
+                  <div class="flip-hint flip-hint-front">click to see details &rarr;</div>
+                </div>
+              </div>
+              <div class="flip-back">
+                <div class="flip-back-content">
+                  <div class="flip-back-title">AI Agents Platform <span class="flip-back-close">click to go back</span></div>
+                  <div class="flip-back-details">
+                    <ul>
+                      <li><strong>Architecture:</strong> Graph RAG with entity-rich knowledge graphs</li>
+                      <li><strong>Data Sources:</strong> Vuln scans, asset inventories, remediation playbooks</li>
+                      <li><strong>Graph Model:</strong> Services &rarr; Vulnerabilities &rarr; Owners &rarr; Remediation steps</li>
+                      <li><strong>Agents:</strong> Autonomous triage of tens of thousands of findings/month</li>
+                      <li><strong>Safety:</strong> Policy-based control plane with human-in-the-loop review</li>
+                      <li><strong>Impact:</strong> 90% reduction in mean-time-to-remediate</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="flip-container" onclick="this.classList.toggle('flipped')">
+            <div class="flip-inner">
+              <div class="flip-front">
+                <div class="built-card">
+                  <div class="built-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent-green)" stroke-width="1.5"><path d="M9 12l2 2 4-4"/><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                  </div>
+                  <div class="built-name">PacBot <span class="oss-badge">Open Source</span></div>
+                  <div class="built-desc">Continuous security &amp; compliance platform built at T-Mobile. Policy-as-code engine enforcing <strong>thousands of policies</strong> across 500+ accounts, auto-remediating <strong>tens of thousands of violations</strong>. 1,300+ GitHub stars, 280+ forks.</div>
+                  <div class="built-tech">AWS &bull; Lambda &bull; Policy-as-Code &bull; AutoFix &bull; Multi-Account</div>
+                  <div class="flip-hint flip-hint-front">click to see details &rarr;</div>
+                </div>
+              </div>
+              <div class="flip-back">
+                <div class="flip-back-content">
+                  <div class="flip-back-title">PacBot <span class="flip-back-close">click to go back</span></div>
+                  <div class="flip-back-details">
+                    <ul>
+                      <li><strong>Philosophy:</strong> Assess &rarr; Report &rarr; Remediate &rarr; Repeat</li>
+                      <li><strong>Scale:</strong> Thousands of policies across 500+ AWS accounts</li>
+                      <li><strong>AutoFix:</strong> Tens of thousands of violations auto-remediated</li>
+                      <li><strong>Community:</strong> 1,300+ GitHub stars, 280+ forks, Apache 2.0</li>
+                      <li><strong>Spinout:</strong> <a href="https://paladincloud.io/" target="_blank" rel="noopener" style="color:var(--accent-green);text-decoration:none;" onclick="event.stopPropagation()">Paladin Cloud</a> &mdash; $3.3M seed (Samsung Next, T-Mobile Ventures)</li>
+                      <li><strong>Press:</strong> <a href="https://pacbot.org" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;" onclick="event.stopPropagation()">pacbot.org</a> &bull; TechCrunch &bull; SC Magazine</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
